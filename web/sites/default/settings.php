@@ -282,7 +282,7 @@ $databases = [];
  *   $settings['hash_salt'] = file_get_contents('/home/example/salt.txt');
  * @endcode
  */
-$settings['hash_salt'] = 'HokQ0_1uIufhirbmsTXXNqvFoP4sHSQFjPX0rQUEdkIX_iVopoig4PBJOZjewgJtcCew4PGf1A';
+$settings['hash_salt'] = 'l8-qnE5RWoBby0t3_TQTlV9YTKpQ4tZxA58oGcbqoVZagck9_y0t8IGAP2JT1P5ccmN57YZSJw';
 
 /**
  * Deployment identifier.
@@ -738,6 +738,12 @@ $settings['container_yamls'][] = $app_root . '/' . $site_path . '/services.yml';
  * example.org, with all subdomains included.
  */
 
+$settings['trusted_host_patterns'] = [
+  '^lndo\.site$',
+  '^.+\.lndo\.site$',
+  '^bancor\-api\-dev\.azurewebsites\.net$',
+];
+
 /**
  * The default list of directories that will be ignored by Drupal's file API.
  *
@@ -799,17 +805,26 @@ $settings['migrate_node_migrate_type_classic'] = FALSE;
  * Keep this code block at the end of this file to take full effect.
  */
 #
-# if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
-#   include $app_root . '/' . $site_path . '/settings.local.php';
-# }
-$databases['default']['default'] = array (
-  'database' => 'drupal9',
-  'username' => 'drupal9',
-  'password' => 'drupal9',
+$databases['default']['default'] = array(
+  'database' => getenv('MYSQL_DATABASE'),
+  'username' => getenv('MYSQL_USER'),
+  'password' => getenv('MYSQL_PASSWORD'),
+  'host' => getenv('MYSQL_HOST'),
   'prefix' => '',
-  'host' => 'database',
   'port' => '3306',
   'namespace' => 'Drupal\\Core\\Database\\Driver\\mysql',
   'driver' => 'mysql',
 );
-$settings['config_sync_directory'] = 'sites/default/files/config_5HtRN0lgOxym5eQPZEmPJctdESRoccECqJwUTJDJ5lIteppeq36xjdFPpY3n8AMaMm3iTj3TOA/sync';
+$settings['config_sync_directory'] = '../config/sync';
+$settings['hash_salt'] = 'zJiGZh_ZxN5__LMIQyJJWxhcZw9Nzx2hiJMhFiwlTFiBCnf_KmlFNzKpO045AZlqlP6TvEgbuw';
+
+if (file_exists($app_root . '/' . $site_path . '/settings.local.php')) {
+  include $app_root . '/' . $site_path . '/settings.local.php';
+}
+
+if (
+  isset($GLOBALS['request']) and
+  '/index.php' === $GLOBALS['request']->server->get('SCRIPT_NAME')
+) {
+  $GLOBALS['request']->server->set('SCRIPT_NAME', '/index.php');
+}
