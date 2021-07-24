@@ -7,9 +7,6 @@
 /web/profiles/contrib/
 /web/libraries/
 
-# Ignore sensitive information
-/web/sites/*/settings.local.php
-
 # Ignore Drupal's file directory
 /web/sites/*/files/
 
@@ -30,6 +27,3 @@
 
 #Ignore script lando builder
 /lando_build.sh
-
-#Ignore 
-/web/sites/default/services.yml
