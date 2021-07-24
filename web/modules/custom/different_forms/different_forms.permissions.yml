@@ -1,0 +1,20 @@
+add entity form entity entities:
+  title: 'Create new Entity form entity entities'
+
+administer entity form entity entities:
+  title: 'Administer Entity form entity entities'
+  description: 'Allow to access the administration form to configure Entity form entity entities.'
+  restrict access: true
+
+delete entity form entity entities:
+  title: 'Delete Entity form entity entities'
+
+edit entity form entity entities:
+  title: 'Edit Entity form entity entities'
+
+view published entity form entity entities:
+  title: 'View published Entity form entity entities'
+
+view unpublished entity form entity entities:
+  title: 'View unpublished Entity form entity entities'
+

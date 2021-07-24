@@ -1,0 +1,21 @@
+# Entity form entity routing definition
+entity_form_entity.settings_tab:
+  route_name: entity_form_entity.settings
+  title: 'Settings'
+  base_route: entity_form_entity.settings
+
+entity.entity_form_entity.canonical:
+  route_name: entity.entity_form_entity.canonical
+  base_route: entity.entity_form_entity.canonical
+  title: 'View'
+
+entity.entity_form_entity.edit_form:
+  route_name: entity.entity_form_entity.edit_form
+  base_route: entity.entity_form_entity.canonical
+  title: 'Edit'
+
+entity.entity_form_entity.delete_form:
+  route_name:  entity.entity_form_entity.delete_form
+  base_route:  entity.entity_form_entity.canonical
+  title: Delete
+  weight: 10

@@ -1,0 +1,14 @@
+
+# Entity form entity menu items definition
+entity.entity_form_entity.collection:
+  title: 'Entity form entity list'
+  route_name: entity.entity_form_entity.collection
+  description: 'List Entity form entity entities'
+  parent: system.admin_structure
+  weight: 100
+
+entity_form_entity.admin.structure.settings:
+  title: 'Entity form entity settings'
+  description: 'Configure Entity form entity entities'
+  route_name: entity_form_entity.settings
+  parent: system.admin_structure
