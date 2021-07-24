@@ -1,0 +1,35 @@
+<?php
+
+/**
+ * @file
+ * Contains different_forms.module.
+ */
+
+use Drupal\Core\Routing\RouteMatchInterface;
+
+/**
+ * Implements hook_help().
+ */
+function different_forms_help($route_name, RouteMatchInterface $route_match) {
+  switch ($route_name) {
+    // Main module help for the different_forms module.
+    case 'help.page.different_forms':
+      $output = '';
+      $output .= '<h3>' . t('About') . '</h3>';
+      $output .= '<p>' . t('This module will show forms differences') . '</p>';
+      return $output;
+
+    default:
+  }
+}
+
+/**
+ * Implements hook_theme().
+ */
+function different_forms_theme() {
+  return [
+    'different_forms' => [
+      'render element' => 'children',
+    ],
+  ];
+}
